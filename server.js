@@ -1,13 +1,15 @@
-const express = require("express");
-const http = require("http");
-const { Server } = require("socket.io");
+const express = require('express');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "*", // Change this to your GitHub Pages URL when deployed
-        methods: ["GET", "POST"]
+        origin: "https://jpolisky.github.io/smartfour-client/",
+        methods: ['GET', 'POST']
     }
 });
 
@@ -153,3 +155,7 @@ function checkWins(index, board, playedPiece) {
     }
     return null;
 }
+
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
