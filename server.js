@@ -8,7 +8,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://jpolisky.github.io/smartfour-client/",
+        origin: "https://jpolisky.github.io/smart-four/",
         methods: ['GET', 'POST']
     }
 });
